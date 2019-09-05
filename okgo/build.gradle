@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'com.novoda.bintray-release'
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -10,17 +10,18 @@ android {
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName_okgo
     }
-
-//    compileOptions {
-//        sourceCompatibility JavaVersion.VERSION_1_8
-//        targetCompatibility JavaVersion.VERSION_1_8
-//    }
-
 }
 
+publish {
+    userOrg = 'owner'
+    repoName='scar'
+    artifactId = 'okgo'
+    groupId = 'com.lzy.okgo'
+    publishVersion = '1.0.0'
+    desc = 'okgo_revision'
+    website = 'https://github.com/scarlee/okgo_revision'
+}
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    api 'com.squareup.okhttp3:okhttp:4.1.0'
+    api 'com.squareup.okhttp3:okhttp:4.1.1'
 }
-
-//apply from: 'bintray.gradle'
