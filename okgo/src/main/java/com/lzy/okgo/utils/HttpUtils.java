@@ -79,7 +79,7 @@ public class HttpUtils {
             for (Map.Entry<String, String> entry : headers.headersMap.entrySet()) {
                 //对头信息进行 utf-8 编码,防止头信息传中文,这里暂时不编码,可能出现未知问题,如有需要自行编码
 //                String headerValue = URLEncoder.encode(entry.getValue(), "UTF-8");
-                headerBuilder.add(entry.getKey(), entry.getValue());
+//                headerBuilder.add(entry.getKey(), entry.getValue());
             }
         } catch (Exception e) {
             OkLogger.printStackTrace(e);

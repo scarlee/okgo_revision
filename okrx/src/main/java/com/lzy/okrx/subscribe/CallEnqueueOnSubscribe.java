@@ -48,7 +48,6 @@ public final class CallEnqueueOnSubscribe<T> implements OnSubscribe<Response<T>>
         final CallArbiter<T> arbiter = new CallArbiter<>(call, subscriber);
         subscriber.add(arbiter);
         subscriber.setProducer(arbiter);
-
         call.execute(new Callback<T>() {
             @Override
             public T convertResponse(okhttp3.Response response) throws Throwable {
