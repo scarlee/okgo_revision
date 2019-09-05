@@ -17,7 +17,7 @@ package com.lzy.demo.base;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
+import androidx.appcompat.app.ActionBar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;

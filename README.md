@@ -55,13 +55,14 @@ Android Studio用户
 > 一般来说，只需要添加第一个okgo的核心包即可，其余的三个库根据自己的需要选择添加！！！
 
 ```java
+compile 'com.lzy.okgo:okgo:1.0.0'
 //必须使用
-compile 'com.lzy.net:okgo:3.0.4'
+//compile 'com.lzy.net:okgo:3.0.4'
 
 //以下三个选择添加，okrx和okrx2不能同时使用
-compile 'com.lzy.net:okrx:1.0.2'
-compile 'com.lzy.net:okrx2:2.0.2'  
-compile 'com.lzy.net:okserver:2.0.5'
+//compile 'com.lzy.net:okrx:1.0.2'
+//compile 'com.lzy.net:okrx2:2.0.2'
+//compile 'com.lzy.net:okserver:2.0.5'
 ```
 
 Eclipse的用户(赶紧换AS吧)，可以选择添加本项目根目录中 `/jar` 目录下的jar包:
@@ -116,7 +117,20 @@ okgo, okrx, okrx2, okserver 所有代码均可以混淆,但是由于底层使用
 -dontwarn okio.**
 -keep class okio.**{*;}
 ```
+R8 / ProGuard
+```java
+# JSR 305 annotations are for embedding nullability information.
+-dontwarn javax.annotation.**
 
+# A resource is loaded with a relative path so the package of this class must be preserved.
+-keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
+
+# Animal Sniffer compileOnly dependency to ensure APIs are compatible with older versions of Java.
+-dontwarn org.codehaus.mojo.animal_sniffer.*
+
+# OkHttp platform used only on JVM and when Conscrypt dependency is available.
+-dontwarn okhttp3.internal.platform.ConscryptPlatform
+```
 当然如果你确实不需要混淆okgo的代码,可以继续添加以下代码
 ```java
 #okgo
